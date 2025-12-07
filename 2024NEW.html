@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>2024 最新作品 | 藝起玩HAkka</title>
+  
+  <meta name="description" content="2024藝起玩HAkka最新文創作品集">
+  <meta name="author" content="夥紅創客">
+
+  <link rel="shortcut icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* --- 全局設定 --- */
+    :root {
+      --primary-color: #B23A3A; /* 客家紅 */
+      --secondary-color: #2C3E50; /* 深藍灰 */
+      --bg-light: #F9F7F2; /* 米白紙質感背景 */
+      --text-main: #333333;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light); /* 整個頁面的背景色 */
+      line-height: 1.7;
+      padding-top: 76px; /* 避開 Fixed Navbar */
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-family: 'Noto Serif TC', serif; /* 標題使用宋體 */
+      font-weight: 700;
+    }
+
+    /* 導覽列 */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 10px 0;
+    }
+    .navbar-brand img { height: 45px; }
+    .nav-link {
+      color: var(--secondary-color) !important;
+      font-family: 'Noto Serif TC', serif;
+      margin-left: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+      background-color: var(--primary-color); transition: 0.3s; transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 80%; }
+
+    /* 內頁標題區塊 (Header Banner) */
+    .page-header {
+      position: relative;
+      height: 40vh;
+      min-height: 300px;
+      background-image: url('images/new.png'); /* 請確認背景圖路徑 */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .header-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(44, 62, 80, 0.6); /* 深藍色遮罩，提升質感 */
+    }
+
+    .header-content { position: relative; z-index: 2; }
+    .header-content h1 { font-size: 2.5rem; margin-bottom: 1rem; letter-spacing: 2px; }
+
+    /* 麵包屑導覽 */
+    .breadcrumb-custom {
+      padding: 0; margin: 0; background: transparent; justify-content: center;
+      font-family: 'Noto Serif TC', serif; font-size: 0.9rem;
+    }
+    .breadcrumb-custom a { color: #ccc; text-decoration: none; }
+    .breadcrumb-custom a:hover { color: #fff; }
+    .breadcrumb-custom .active { color: var(--primary-color); }
+    .breadcrumb-item + .breadcrumb-item::before { color: #aaa; content: "/"; padding: 0 10px; }
+
+
+    /* --- 作品列表核心樣式 (修改重點) --- */
+    .section-intro {
+      text-align: center; margin: 60px 0 50px;
+    }
+    .section-intro h2 {
+      color: var(--secondary-color); position: relative; display: inline-block; padding-bottom: 15px;
+    }
+    .section-intro h2::after {
+      content: ''; position: absolute; width: 60px; height: 3px; background: var(--primary-color);
+      bottom: 0; left: 50%; transform: translateX(-50%);
+    }
+
+    /* 作品項目容器 */
+    .portfolio-item {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 4px; /* 輕微圓角 */
+      margin-bottom: 30px; /* 項目間距 */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 輕微陰影增加立體感 */
+    }
+
+    /* 圖片樣式 - 確保完整顯示 */
+    .portfolio-item img.img-fluid {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      /* 關鍵：不強制設定高度，讓圖片依照原始比例呈現 */
+    }
+
+    /* 遮罩層與文字內容 */
+    .portfolio-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(44, 62, 80, 0.85); /* 深藍灰半透明遮罩 */
+      opacity: 0; /* 預設隱藏 */
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .overlay-content {
+      transform: translateY(20px); /* 文字預設稍微往下 */
+      transition: all 0.4s ease;
+    }
+
+    .overlay-content h3 {
+      color: #fff; font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px;
+    }
+    .overlay-content p {
+      color: var(--primary-color); /* 副標題用客家紅 */
+      font-size: 1rem; margin-bottom: 0; font-weight: 500;
+    }
+
+    /* Hover 動畫效果 */
+    .portfolio-item:hover .img-fluid {
+      transform: scale(1.05); /* 圖片輕微放大 */
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1; /* 顯示遮罩 */
+    }
+    .portfolio-item:hover .overlay-content {
+      transform: translateY(0); /* 文字上浮歸位 */
+    }
+
+
+    /* Footer 樣式 */
+    .site-footer {
+      background-color: #1a1a1a; color: #b0b0b0; padding: 70px 0 30px; margin-top: 50px;
+    }
+    .site-footer h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--primary-color); padding-left: 10px; }
+    .site-footer a { color: #b0b0b0; text-decoration: none; transition: 0.3s; }
+    .site-footer a:hover { color: var(--primary-color); }
+    .copyright { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.8rem; }
+    .contact-list li { margin-bottom: 12px; display: flex; }
+    .contact-list i { width: 25px; color: var(--primary-color); margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+
+  <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/夥紅ＬＯＧＯ.png 的副本.png" alt="藝起玩Hakka">
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHakka" aria-controls="navbarHakka" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarHakka">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+            <li class="nav-item"><a class="nav-link" href="intro.html">品牌介紹</a></li>
+            <li class="nav-item"><a class="nav-link" href="2025.html">最新作品</a></li>
+            <li class="nav-item"><a class="nav-link active" href="2024NEW.html">歷年作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="header-overlay"></div>
+    <div class="header-content" data-aos="fade-down">
+      <h1>2024 最新作品</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item active" aria-current="page">最新作品</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section class="container pb-5">
+    
+    <div class="section-intro" data-aos="fade-up">
+      <h2>2024 文創成果展示</h2>
+      <p class="mt-3 text-muted">集結各路豪傑，最新文創作品，點選圖片觀看詳細內容！</p>
+    </div>
+
+    <div class="row">
+      
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="2024TEAM1-PAGE.html" class="portfolio-item">
+          <img src="images/T1.png" alt="高萍袖、高敏誠" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>高萍袖、高敏誠</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <a href="2024TEAM2-PAGE.html" class="portfolio-item">
+          <img src="images/T2.png" alt="王彤羽、林 廷" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>王彤羽、林 廷</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="2024TEAM3-PAGE.html" class="portfolio-item">
+          <img src="images/T3.png" alt="朱胤嘉、王曉慈" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>朱胤嘉、王曉慈</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="2024TEAM4-PAGE.html" class="portfolio-item">
+          <img src="images/T4.png" alt="雷衍星、陳予勁" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>雷衍星、陳予勁</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <a href="2024TEAM5-PAGE.html" class="portfolio-item">
+          <img src="images/T5.png" alt="楊晴儀、楊鴻飛" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>楊晴儀、楊鴻飛</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="2024TEAM6-PAGE.html" class="portfolio-item">
+          <img src="images/T6.png" alt="徐俊文、溫莉如" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>徐俊文、溫莉如</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="2024TEAM7-PAGE.html" class="portfolio-item">
+          <img src="images/T7.png" alt="林偉恩、廖慈婷" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>林偉恩、廖慈婷</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <a href="2024TEAM8-PAGE.html" class="portfolio-item">
+          <img src="images/T8.png" alt="呂宜欣、唐巧軒" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>呂宜欣、唐巧軒</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="2024TEAM9-PAGE.html" class="portfolio-item">
+          <img src="images/T9.png" alt="蘇玟珏、許詩溱" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>蘇玟珏、許詩溱</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="2024TEAM10-PAGE.html" class="portfolio-item">
+          <img src="images/T10.png" alt="吳錤宗、吳念臻" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>吳錤宗、吳念臻</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+        <a href="2024TEAM11-PAGE.html" class="portfolio-item">
+          <img src="images/T11.png" alt="楊道昀、張 力" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>楊道昀、張 力</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="2024TEAM12-PAGE.html" class="portfolio-item">
+          <img src="images/T12.png" alt="賴家馨、賴佩勤" class="img-fluid">
+          <div class="portfolio-overlay">
+            <div class="overlay-content">
+              <h3>賴家馨、賴佩勤</h3>
+              <p>創作者</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h3>關於夥紅創客</h3>
+          <p class="text-justify">「夥房」(foˋ fong)夥房，在客語裡指的是「家族一起居住生活於合院」的意思，而「夥紅」與「夥房」有相似發音，也帶有火紅意涵。</p>
+          <a href="https://www.facebook.com/tp.hakkayouth" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="col-lg-5 mb-4 ps-lg-5">
+          <h3>藝起玩Hakka 夥紅後生創客</h3>
+          <ul class="list-unstyled contact-list">
+            <li><span><i class="fas fa-building"></i></span> 主辦單位: 臺北市政府客家事務委員會</li>
+            <li><span><i class="fas fa-check-circle"></i></span> 承辦單位: 聚豐整合行銷有限公司</li>
+            <li><span><i class="fas fa-phone"></i></span> 02-8369-2996</li>
+            <li><span><i class="fas fa-envelope"></i></span> togethermail@gftogehter.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h3>快速連結</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://hac.gov.taipei/"><i class="fas fa-angle-right me-2"></i>臺北市政府客家事務委員會</a></li>
+            <li class="mb-2"><a href="https://www.facebook.com/tp.hakkayouth"><i class="fas fa-angle-right me-2"></i>夥紅FB粉絲專頁</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">
+            &copy; <script>document.write(new Date().getFullYear());</script> 夥紅創客 All Rights Reserved. <br>
+            Template customized by <a href="#" class="text-white">AN JUI</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800, offset: 120 });
+  </script>
+
+</body>
+</html>

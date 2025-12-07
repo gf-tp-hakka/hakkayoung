@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>「客」在你心中的獅王 | 藝起玩HAkka</title>
+  
+  <meta name="description" content="2024藝起玩HAkka - 客家獅文創作品">
+  <meta name="author" content="夥紅創客">
+
+  <link rel="shortcut icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* --- 全局設定 --- */
+    :root {
+      --primary-color: #B23A3A; /* 客家紅 */
+      --secondary-color: #2C3E50; /* 深藍灰 */
+      --bg-light: #F9F7F2; /* 米白 */
+      --text-main: #333333;
+      --text-muted: #666666;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 1.8;
+      padding-top: 76px;
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+    }
+
+    /* --- 導覽列 (與首頁一致) --- */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 10px 0;
+    }
+    .navbar-brand img { height: 45px; }
+    .nav-link {
+      color: var(--secondary-color) !important;
+      font-family: 'Noto Serif TC', serif;
+      margin-left: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+      background-color: var(--primary-color); transition: 0.3s; transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 80%; }
+
+
+    /* --- 內頁 Header Banner --- */
+    .page-header {
+      position: relative;
+      height: 60vh; 
+      min-height: 400px;
+      background-image: url('images/T1-00.png'); /* 預設使用作品主圖 */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 60px;
+    }
+
+    .header-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4); /* 輕微遮罩 */
+    }
+
+    .header-content { position: relative; z-index: 2; max-width: 800px; padding: 20px;}
+    .header-content h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+    .breadcrumb-custom {
+      padding: 0; margin: 0; background: transparent; justify-content: center;
+      font-family: 'Noto Serif TC', serif; font-size: 1rem;
+    }
+    .breadcrumb-custom a { color: #ddd; text-decoration: none; }
+    .breadcrumb-custom a:hover { color: #fff; }
+    .breadcrumb-item + .breadcrumb-item::before { color: #ccc; }
+
+
+    /* --- 內容區塊樣式 --- */
+    .section-intro { margin-bottom: 60px; text-align: center; }
+    .section-intro p { max-width: 800px; margin: 0 auto; color: var(--text-muted); font-size: 1.1rem;}
+
+    /* 創作者圓形頭像 */
+    .creator-card { text-align: center; margin-bottom: 30px; }
+    .creator-img {
+      width: 200px; height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .creator-card:hover .creator-img { transform: scale(1.05); border-color: var(--primary-color); }
+    .creator-name { font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 5px; }
+
+    /* 作品左右排版 */
+    .work-gallery img {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .work-info-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 100px; /* 讓右側文字隨卷軸滑動後固定 */
+    }
+
+    .work-info-title {
+      color: var(--primary-color);
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .specs-list li {
+      margin-bottom: 15px;
+      border-bottom: 1px dashed #eee;
+      padding-bottom: 15px;
+    }
+    .specs-label { font-weight: 700; color: var(--secondary-color); display: block; margin-bottom: 5px; }
+
+
+    /* Footer */
+    .site-footer {
+      background-color: #1a1a1a; color: #b0b0b0; padding: 70px 0 30px; margin-top: 80px;
+    }
+    .site-footer h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--primary-color); padding-left: 10px; }
+    .site-footer a { color: #b0b0b0; text-decoration: none; transition: 0.3s; }
+    .site-footer a:hover { color: var(--primary-color); }
+    .copyright { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.8rem; }
+    .contact-list li { margin-bottom: 12px; display: flex; }
+    .contact-list i { width: 25px; color: var(--primary-color); margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+
+  <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/夥紅ＬＯＧＯ.png 的副本.png" alt="藝起玩Hakka">
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHakka" aria-controls="navbarHakka" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarHakka">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+            <li class="nav-item"><a class="nav-link" href="intro.html">品牌介紹</a></li>
+            <li class="nav-item"><a class="nav-link" href="2025.html">最新作品</a></li>
+            <li class="nav-item"><a class="nav-link active" href="2024NEW.html">歷年作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="header-overlay"></div>
+    <div class="header-content" data-aos="fade-up">
+      <h1>「客」在你心中的獅王</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item"><a href="2024NEW.html">歷年作品</a></li>
+          <li class="breadcrumb-item active" aria-current="page">2024</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <div class="container pb-5">
+    
+    <div class="section-intro" data-aos="fade-up">
+      <h2 class="serif-font mb-4">創作團隊</h2>
+      <p class="mb-5">
+        客家獅獅頭的設計具有「天圓地方」的象徵意義，圓頭代表天圓，
+        方形的嘴象徵「吃四方」，寓意無論身處何方，都能闖出一片天地。
+        方口獅不僅是舞獅技藝的代表，也體現了客家族群的文化精神與團隊合作的精神。
+      </p>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="creator-card">
+            <img src="images/T1-01.jpg" alt="高萍袖" class="creator-img">
+            <h3 class="creator-name serif-font">高萍袖</h3>
+            <span class="text-muted small">創作者</span>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="creator-card">
+            <img src="images/T1-02.jpg" alt="高敏誠" class="creator-img">
+            <h3 class="creator-name serif-font">高敏誠</h3>
+            <span class="text-muted small">創作者</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr class="my-5" style="opacity: 0.1;">
+
+    <div class="row">
+      
+      <div class="col-lg-7 work-gallery" data-aos="fade-right">
+        <img src="images/T1-03.png" alt="作品細節 1" class="img-fluid">
+        <img src="images/T1-04.jpg" alt="作品細節 2" class="img-fluid">
+        <img src="images/T1-05.jpg" alt="作品細節 3" class="img-fluid">
+      </div>
+
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="work-info-box">
+          
+          <h3 class="work-info-title serif-font">設計緣起</h3>
+          <p class="text-justify mb-4">
+            客家獅獅頭的設計具有「天圓地方」的象徵意義。目前全台能夠舞客家獅的團隊不足10隊，因此這項技藝的傳承顯得尤為重要。將客家方口獅傳統表演，與生活緊密結合，創作出視覺翻新的方口獅迷你包包，承載了客家人的信仰、風俗和情感。
+          </p>
+
+          <h3 class="work-info-title serif-font">作品介紹</h3>
+          <p class="text-justify mb-5">
+            設計方口獅包包的構想是將方口獅招財納福的文化融入現代生活用品中。包包的設計結合客家獅的獅頭造型，方口的獨特設計象徵開口迎接八方來客，寓意招財納福。材質選用傳統工藝與現代時尚相結合的方式。透過這樣的設計，方口獅包包不僅是時尚單品，更是客家文化的象徵。
+          </p>
+
+          <h4 class="serif-font mb-3 text-dark">規格資訊</h4>
+          <ul class="list-unstyled specs-list">
+            <li>
+              <span class="specs-label">作品材質</span>
+              布料、小五金 (尺寸 28cm * 18cm)
+            </li>
+            <li style="border-bottom: none;">
+              <span class="specs-label">售價</span>
+              <span style="color: var(--primary-color); font-weight: bold;">新品見面價 $488</span> (定價 $888)
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h3>關於夥紅創客</h3>
+          <p class="text-justify">「夥房」(foˋ fong)夥房，在客語裡指的是「家族一起居住生活於合院」的意思，而「夥紅」與「夥房」有相似發音，也帶有火紅意涵。</p>
+          <a href="https://www.facebook.com/tp.hakkayouth" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="col-lg-5 mb-4 ps-lg-5">
+          <h3>藝起玩Hakka 夥紅後生創客</h3>
+          <ul class="list-unstyled contact-list">
+            <li><span><i class="fas fa-building"></i></span> 主辦單位: 臺北市政府客家事務委員會</li>
+            <li><span><i class="fas fa-check-circle"></i></span> 承辦單位: 聚豐整合行銷有限公司</li>
+            <li><span><i class="fas fa-phone"></i></span> 02-8369-2996</li>
+            <li><span><i class="fas fa-envelope"></i></span> togethermail@gftogehter.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h3>快速連結</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://hac.gov.taipei/"><i class="fas fa-angle-right me-2"></i>臺北市政府客家事務委員會</a></li>
+            <li class="mb-2"><a href="https://www.facebook.com/tp.hakkayouth"><i class="fas fa-angle-right me-2"></i>夥紅FB粉絲專頁</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">
+            &copy; <script>document.write(new Date().getFullYear());</script> 夥紅創客 All Rights Reserved. <br>
+            Template customized by <a href="#" class="text-white">AN JUI</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+
+</body>
+</html>

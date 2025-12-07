@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>茶葉手抄紙 | 2025 轉屋下</title>
+  
+  <meta name="description" content="2025藝起玩HAkka - 茶葉手抄紙 (寫信仔)">
+  <meta name="author" content="夥紅創客">
+
+  <link rel="shortcut icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* --- 全局設定 --- */
+    :root {
+      --primary-color: #B23A3A; /* 客家紅 */
+      --secondary-color: #2C3E50; /* 深藍灰 */
+      --bg-light: #F9F7F2; /* 米白 */
+      --text-main: #333333;
+      --text-muted: #666666;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 2;
+      padding-top: 76px;
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+    }
+
+    /* --- 導覽列 --- */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 10px 0;
+    }
+    .navbar-brand img { height: 45px; }
+    .nav-link {
+      color: var(--secondary-color) !important;
+      font-family: 'Noto Serif TC', serif;
+      margin-left: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+      background-color: var(--primary-color); transition: 0.3s; transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 80%; }
+
+    /* --- 內頁 Header Banner --- */
+    .page-header {
+      position: relative;
+      height: 50vh; 
+      min-height: 300px;
+      background-image: url('images/2025banner.png'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .header-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+    }
+
+    .header-content { position: relative; z-index: 2; max-width: 800px; padding: 20px;}
+    .header-content h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+    .breadcrumb-custom {
+      padding: 0; margin: 0; background: transparent; justify-content: center;
+      font-family: 'Noto Serif TC', serif; font-size: 1rem;
+    }
+    .breadcrumb-custom a { color: #ddd; text-decoration: none; }
+    .breadcrumb-custom a:hover { color: #fff; }
+    .breadcrumb-item + .breadcrumb-item::before { color: #ccc; }
+
+    /* --- 1. 主圖展示區 (雙圖版樣式) --- */
+    .product-hero-section {
+      padding: 60px 0 0;
+      text-align: center;
+    }
+    
+    .hero-img-dual {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-img-dual:hover {
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .hero-img-dual {
+            height: 300px;
+        }
+    }
+
+    /* --- 2. 設計理念區塊 --- */
+    .concept-section {
+      text-align: center;
+      margin-bottom: 80px;
+      padding-top: 40px;
+    }
+    .concept-title {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .concept-title::after {
+      content: ''; display: block; width: 60px; height: 3px; background: var(--secondary-color);
+      margin: 10px auto 0;
+    }
+    
+    .poetic-text {
+      font-size: 1.15rem;
+      color: #555;
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    /* --- 3. 產品細項清單 --- */
+    .item-list-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--primary-color);
+      margin-bottom: 80px;
+    }
+    .item-list li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      list-style: none;
+      padding-left: 1.5em;
+      text-indent: -1.5em;
+    }
+    .item-list li::before {
+      content: '☉';
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* --- 4. 視覺設計 & 照片牆 --- */
+    .visual-design-section {
+      padding: 60px 0;
+      background-color: #fff;
+    }
+    .visual-text h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+    
+    /* 側拍照片牆樣式 */
+    .work-gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery-item {
+      flex: 1 1 calc(50% - 10px);
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item.small {
+      flex: 1 1 calc(33.333% - 10px);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* --- 5. 文化意涵 (修正版) --- */
+    .culture-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    /* 完整文字區塊樣式 */
+    .culture-full-text {
+      text-align: justify; /* 左右對齊 */
+      line-height: 1.9;
+      font-size: 1.1rem;
+      color: #444;
+      font-family: 'Noto Serif TC', serif;
+      margin-bottom: 50px;
+      position: relative;
+      padding: 0 20px;
+    }
+    
+    @media (min-width: 992px) {
+      .culture-full-text {
+        padding: 0 50px; /* 電腦版內縮多一點，增加閱讀質感 */
+      }
+    }
+
+    .culture-card {
+      padding: 30px 20px;
+      background: #fff;
+      height: 100%;
+      border-top: 3px solid var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .culture-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-color);
+    }
+    .culture-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .culture-title {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    /* --- Credit --- */
+    .credit-section {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid #ddd;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #1a1a1a; color: #b0b0b0; padding: 70px 0 30px;
+    }
+    .site-footer h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--primary-color); padding-left: 10px; }
+    .site-footer a { color: #b0b0b0; text-decoration: none; transition: 0.3s; }
+    .site-footer a:hover { color: var(--primary-color); }
+    .copyright { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.8rem; }
+    .contact-list li { margin-bottom: 12px; display: flex; }
+    .contact-list i { width: 25px; color: var(--primary-color); margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+
+  <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/夥紅ＬＯＧＯ.png 的副本.png" alt="藝起玩Hakka">
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHakka">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarHakka">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+            <li class="nav-item"><a class="nav-link" href="intro.html">品牌介紹</a></li>
+            <li class="nav-item"><a class="nav-link active" href="2025.html">最新作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="2024NEW.html">歷年作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="header-overlay"></div>
+    <div class="header-content" data-aos="fade-up">
+      <h1>寫信仔 <br><span style="font-size: 1.5rem; font-weight: 300;">字裡行間的思鄉與問候</span></h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-custom">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item"><a href="2025.html">2025 轉屋下</a></li>
+          <li class="breadcrumb-item active" aria-current="page">茶葉手抄紙</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section class="product-hero-section container" data-aos="fade-up">
+    <div class="row g-4 justify-content-center align-items-center">
+      
+      <div class="col-lg-6">
+        <img src="images/2025-paper-hero-1.jpg" alt="茶葉手抄紙作品 1" class="hero-img-dual">
+      </div>
+      
+      <div class="col-lg-6">
+        <img src="images/2025-paper-hero-2.jpg" alt="茶葉手抄紙作品 2" class="hero-img-dual">
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="container concept-section" data-aos="fade-up">
+    <h2 class="concept-title serif-font">設計理念</h2>
+    <div class="poetic-text">
+      <p>
+        創意來自於客家人珍惜資源、回收再利用的生活智慧。<br>
+        茶葉渣不再只是廢棄物，而是化身為充滿溫度的手抄紙。
+      </p>
+      <p>
+        於是，手抄紙明信片誕生了！<br>
+        寫下對家人的關懷思念，記憶家鄉的風景和味道，<br>
+        每一張紙，都滿載著「轉屋下」的深情厚意。
+      </p>
+      <p style="color: var(--primary-color); font-weight: bold; margin-top: 20px;">
+        是家的呼喚，也是遊子對家的念想
+      </p>
+    </div>
+  </section>
+
+  <section class="container" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="item-list-box">
+          <h3 class="serif-font mb-4" style="color: var(--secondary-color);">作品項目包含：</h3>
+          <ul class="item-list">
+            <li><strong>手抄紙明信片</strong> - 寫滿思念的載體</li>
+            <li><strong>茶葉包</strong> - 品味家鄉的甘甜</li>
+            <li><strong>茶葉渣</strong> - 循環再生的起點</li>
+            <li><strong>空白手抄紙</strong> - 自由揮灑的空間</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visual-design-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 visual-text mb-5 mb-lg-0" data-aos="fade-right">
+          <h3 class="serif-font">暗藏玄機的設計巧思</h3>
+          <p>
+            圖案設計以<strong>客家小炒、擂茶</strong>等元素，去呼應茶杯與盤子的視覺風格。
+          </p>
+          <p>
+            表面上看，是「碗與茶杯」的日常圖案，其實暗藏玄機。靈感來自臺北市客委會的 Logo 屋簷圖形，經過巧妙轉化，成為一個雙關的設計元素。
+          </p>
+          <p style="border-left: 4px solid var(--primary-color); padding-left: 15px; color: #555;">
+            當明信片翻轉時，圖案就變成了<strong>「屋簷」</strong>的形象，完美呼應了「轉屋下」回家團圓的意涵。
+          </p>
+        </div>
+
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="work-gallery-grid">
+            <div class="gallery-item">
+              <img src="images/paper-work1.jpeg" alt="工藝組側拍1">
+            </div>
+            <div class="gallery-item">
+              <img src="images/paper-work2.jpg" alt="工藝組側拍2">
+            </div>
+            
+            <div class="gallery-item small">
+              <img src="images/paper-work3.jpg" alt="工藝組側拍3">
+            </div>
+            <div class="gallery-item small">
+              <img src="images/paper-work4.jpeg" alt="工藝組側拍4">
+            </div>
+            <div class="gallery-item small">
+              <img src="images/paper-work5.jpg" alt="工藝組側拍5">
+            </div>
+          </div>
+          <p class="text-muted text-center mt-2 small">工藝組手抄紙製作側拍紀錄</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container culture-section" data-aos="fade-up">
+    <h2 class="concept-title serif-font mb-5">手抄紙文化意涵</h2>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="culture-full-text">
+          <p class="mb-4">
+            奉茶是客家文化中熱情好客的體現，也是客家庄早年獨特的風景，代表著無私、同理心與人情味。
+          </p>
+          <p>
+            茶葉渣的回升，更是充滿客家人珍惜資源，與大自然和平相處的行動之一。我們將用過的茶葉渣回收再利用，製作成手抄紙，充滿了回家的另一種氛圍，這樣的轉換不僅是一種形式的趣味，也隱喻了「回到家」的感覺：唯有回到熟悉的屋簷下，才能細細品嚐到記憶中茶香和家的溫暖熱情。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-md-4">
+        <div class="culture-card">
+          <i class="culture-icon fas fa-mug-hot"></i>
+          <h3 class="culture-title serif-font">奉茶精神</h3>
+          <p>客家庄早年獨特的風景，代表著無私、同理心與人情味。</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="culture-card">
+          <i class="culture-icon fas fa-recycle"></i>
+          <h3 class="culture-title serif-font">惜物再生</h3>
+          <p>珍惜資源，與大自然和平相處的行動，賦予茶葉渣新生命。</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="culture-card">
+          <i class="culture-icon fas fa-home"></i>
+          <h3 class="culture-title serif-font">屋簷下的溫暖</h3>
+          <p>唯有回到熟悉的屋簷下，才能細細品嚐到記憶中的茶香與熱情。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="container credit-section">
+    <p class="mb-0">
+      設計製作: 夥紅創客團隊工藝組 &nbsp;|&nbsp; 創作者: 林沂璇、許芳瑜
+    </p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h3>關於夥紅創客</h3>
+          <p>「夥房」(foˋ fong) 在客語裡指的是「家族一起居住生活於合院」的意思，而「夥紅」與「夥房」有相似發音，也帶有火紅意涵。</p>
+          <a href="https://www.facebook.com/tp.hakkayouth" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="col-lg-5 mb-4 ps-lg-5">
+          <h3>藝起玩Hakka 夥紅後生創客</h3>
+          <ul class="list-unstyled contact-list">
+            <li><span><i class="fas fa-building"></i></span> 主辦單位: 臺北市政府客家事務委員會</li>
+            <li><span><i class="fas fa-check-circle"></i></span> 承辦單位: 聚豐整合行銷有限公司</li>
+            <li><span><i class="fas fa-phone"></i></span> 02-8369-2996</li>
+            <li><span><i class="fas fa-envelope"></i></span> togethermail@gftogehter.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h3>快速連結</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://hac.gov.taipei/"><i class="fas fa-angle-right me-2"></i>臺北市政府客家事務委員會</a></li>
+            <li class="mb-2"><a href="https://www.facebook.com/tp.hakkayouth"><i class="fas fa-angle-right me-2"></i>夥紅FB粉絲專頁</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">
+            &copy; <script>document.write(new Date().getFullYear());</script> 夥紅創客 All Rights Reserved. <br>
+            Template customized by <a href="#" class="text-white">AN JUI</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>2025 轉屋下 | 藝起玩HAkka</title>
+  
+  <meta name="description" content="2025藝起玩HAkka - 轉屋下 – 屋下个燒暖摎味緒">
+  <meta name="author" content="夥紅創客">
+
+  <link rel="shortcut icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* --- 全局設定 --- */
+    :root {
+      --primary-color: #B23A3A; /* 客家紅 */
+      --secondary-color: #2C3E50; /* 深藍灰 */
+      --bg-light: #F9F7F2; /* 米白紙質感 */
+      --text-main: #333333;
+      --text-muted: #666666;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 2; /* 增加行距，讓文字更像詩 */
+      padding-top: 76px;
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+    }
+
+    /* --- 導覽列 --- */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 10px 0;
+    }
+    .navbar-brand img { height: 45px; }
+    .nav-link {
+      color: var(--secondary-color) !important;
+      font-family: 'Noto Serif TC', serif;
+      margin-left: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%;
+      background-color: var(--primary-color); transition: 0.3s; transform: translateX(-50%);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 80%; }
+
+    /* --- 2025 Banner 區塊 --- */
+    .hero-banner {
+      width: 100%;
+      height: auto;
+      min-height: 300px;
+      background-image: url('images/2025banner.png'); /* 這裡設定 Banner 圖片 */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.2); 
+    }
+
+    /* --- 文案區塊 --- */
+    .intro-section {
+      padding: 80px 0 50px;
+      text-align: center;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+    }
+
+    .poetic-text {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: 'Noto Serif TC', serif; /* 文案使用宋體 */
+    }
+    
+    .highlight-text {
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 30px 0;
+      display: block;
+    }
+
+    /* --- 連結按鈕區塊 (Cards) --- */
+    .category-section {
+      padding: 30px 0 100px;
+      background-color: #fff; /* 稍微區隔背景 */
+    }
+
+    /* 新增：區塊標題樣式 */
+    .category-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .category-header h3 {
+        color: var(--secondary-color);
+        font-size: 1.8rem;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .category-header h3::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 10px auto 0;
+    }
+    .category-header p {
+        color: #888;
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+
+    .category-card {
+      display: flex; /* 改用 Flex 讓內容垂直居中 */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-light); /* 卡片改回米色，與白色背景區隔 */
+      border: 1px solid #e0e0e0;
+      padding: 40px 20px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-radius: 8px; /* 圓角稍微加大 */
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 0;
+      background-color: var(--primary-color);
+      transition: all 0.3s ease;
+      z-index: 0;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(178, 58, 58, 0.15);
+      border-color: var(--primary-color);
+    }
+
+    .category-card:hover::before {
+      height: 5px; /* 上方出現紅條 */
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: #999;
+      margin-bottom: 20px; /* 增加底部距離給按鈕 */
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 新增：卡片內的 CTA 按鈕樣式 */
+    .card-cta {
+        margin-top: auto; /* 推到底部 */
+        font-size: 0.95rem;
+        color: var(--primary-color);
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+        border: 1px solid var(--primary-color);
+        padding: 5px 20px;
+        border-radius: 50px;
+        transition: all 0.3s;
+    }
+
+    .category-card:hover .card-icon,
+    .category-card:hover .card-title {
+      color: var(--primary-color);
+    }
+    
+    .category-card:hover .card-cta {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .card-cta i {
+        margin-left: 5px;
+        transition: transform 0.3s;
+    }
+
+    .category-card:hover .card-cta i {
+        transform: translateX(5px); /* 箭頭移動效果 */
+    }
+
+
+    /* --- Footer --- */
+    .site-footer {
+      background-color: #1a1a1a; color: #b0b0b0; padding: 70px 0 30px;
+    }
+    .site-footer h3 { color: #fff; font-size: 1.2rem; margin-bottom: 25px; border-left: 3px solid var(--primary-color); padding-left: 10px; }
+    .site-footer a { color: #b0b0b0; text-decoration: none; transition: 0.3s; }
+    .site-footer a:hover { color: var(--primary-color); }
+    .copyright { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.8rem; }
+    .contact-list li { margin-bottom: 12px; display: flex; }
+    .contact-list i { width: 25px; color: var(--primary-color); margin-top: 5px; }
+  </style>
+</head>
+
+<body>
+
+  <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/夥紅ＬＯＧＯ.png 的副本.png" alt="藝起玩Hakka">
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHakka" aria-controls="navbarHakka" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarHakka">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
+            <li class="nav-item"><a class="nav-link" href="intro.html">品牌介紹</a></li>
+            <li class="nav-item"><a class="nav-link active" href="2025.html">最新作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="2024NEW.html">歷年作品</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+  </section>
+
+  <section class="container intro-section" data-aos="fade-up">
+    <h2 class="main-title serif-font">轉屋下 – 屋下个燒暖摎味緒</h2>
+    
+    <div class="poetic-text">
+      <p>
+        回家，陪伴家人也讓家人的陪伴溫暖內心<br>
+        「轉」是回的意思，有行動的號召，也有回到根本的方向指引<br>
+        「屋下」，象徵家的空間與情感，是客家生活最具溫度的場域…
+      </p>
+      
+      <p class="mt-4">
+        文化從來不是虛空中的符號。<br>
+        真正的文化，是在我們成長過程中一次次發生過的日常——<br>
+        是晚餐時的飯香，是廚房裡嘈嘈切切的聲響，是阿婆坐在搖椅上輕聲哼唱的歌，<br>
+        是屋簷下風拂過竹簾的聲音，是一雙熟悉的碗筷握在手裡的重量。
+      </p>
+
+      <span class="highlight-text">
+        「轉屋下」為「藝起玩HAKKA」計畫第六年的方向<br>
+        回到文化生活的原點——家
+      </span>
+
+      <p>
+        以味道、聲音、感官經驗作為創作切口，進行文化轉譯與藝術實踐。<br>
+        那是一個聚集情感與記憶的所在，也是文化被最自然承載與延續的空間。
+      </p>
+
+      <p class="mt-4">
+        我們邀請青年創作者回到「屋下」，用創作去回應那些被生活包圍的文化記憶，<br>
+        把看似平凡的感受轉譯為動人的文化語言。<br>
+        這不只是一次創作計畫，更是一場找回文化溫度的旅程。
+      </p>
+
+      <p class="mt-4" style="font-weight: 500; color: var(--secondary-color);">
+        在創作裡，我們聽聞家的味道；在創意中，我們看見文化的新模樣。<br>
+        那是一種屬於當代後生的表達，也是客家文化未來的模樣。
+      </p>
+    </div>
+  </section>
+
+  <section class="category-section">
+    <div class="container">
+      
+      <div class="category-header" data-aos="fade-up">
+        <h3 class="serif-font">點選下方類別 探索 2025 最新作品</h3>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <a href="2025-package.html" class="category-card">
+            <i class="card-icon fas fa-gift"></i>
+            <h3 class="card-title">全組大禮盒</h3>
+            <p class="card-subtitle">& 包裝視覺設計</p>
+            <span class="card-cta">查看作品 <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <a href="2025-ceramic.html" class="category-card">
+            <i class="card-icon fas fa-mug-hot"></i>
+            <h3 class="card-title">陶瓷工藝作品</h3>
+            <p class="card-subtitle">Ceramic Craft</p>
+            <span class="card-cta">查看作品 <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="2025-paper.html" class="category-card">
+            <i class="card-icon fas fa-leaf"></i>
+            <h3 class="card-title">茶葉手抄紙</h3>
+            <p class="card-subtitle">Handmade Paper</p>
+            <span class="card-cta">查看作品 <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+          <a href="2025-music.html" class="category-card">
+            <i class="card-icon fas fa-music"></i>
+            <h3 class="card-title">主題音樂</h3>
+            <p class="card-subtitle">Theme Music</p>
+            <span class="card-cta">查看作品 <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h3>關於夥紅創客</h3>
+          <p class="text-justify">「夥房」(foˋ fong)夥房，在客語裡指的是「家族一起居住生活於合院」的意思，而「夥紅」與「夥房」有相似發音，也帶有火紅意涵。</p>
+          <a href="https://www.facebook.com/tp.hakkayouth" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="col-lg-5 mb-4 ps-lg-5">
+          <h3>藝起玩Hakka 夥紅後生創客</h3>
+          <ul class="list-unstyled contact-list">
+            <li><span><i class="fas fa-building"></i></span> 主辦單位: 臺北市政府客家事務委員會</li>
+            <li><span><i class="fas fa-check-circle"></i></span> 承辦單位: 聚豐整合行銷有限公司</li>
+            <li><span><i class="fas fa-phone"></i></span> 02-8369-2996</li>
+            <li><span><i class="fas fa-envelope"></i></span> togethermail@gftogehter.com</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <h3>快速連結</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://hac.gov.taipei/"><i class="fas fa-angle-right me-2"></i>臺北市政府客家事務委員會</a></li>
+            <li class="mb-2"><a href="https://www.facebook.com/tp.hakkayouth"><i class="fas fa-angle-right me-2"></i>夥紅FB粉絲專頁</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="copyright">
+            &copy; <script>document.write(new Date().getFullYear());</script> 夥紅創客 All Rights Reserved. <br>
+            Template customized by <a href="#" class="text-white">AN JUI</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+  </script>
+
+</body>
+</html>
